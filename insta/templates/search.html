@@ -1,0 +1,28 @@
+{%extends 'all-instagram/base.html'%} {% block content %}
+<div class="container mt-5">
+
+  <div class="row mt-5 pt-5">
+    {% if posts%}
+    <h4>Found {{ posts|length }} for {{message}}.</h4> {% else %}
+    <h4> Found 0 results for {{message}}.</h4> {% endif %}
+  </div>
+
+  <div class="row">
+    {% if posts %}
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+        {% if post.prof_pic %}
+        <img src="{{post.prof_pic.url}}" alt="">
+        {% endif %}
+        <h6><b>username:</b> {{post.user.username}}</h6>
+        <p><b>Bio:</b> {{post.bio}}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

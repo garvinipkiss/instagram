@@ -1,0 +1,44 @@
+{%extends "registration/base.html"%} {% load bootstrap4 %} {% load static}
+{% block content %}
+<body>
+<div class="container">
+  <div class="row">
+    <!-- Empty div -->
+    <div class="col-md-5"></div>
+    <div class="col-md-5">
+      {% if form.errors %}
+        <p> Please verify that the information entered is correct</p>
+      {% endif %}
+      <div class="card mt-2" style="width: 24rem;">
+  <div class="card-body">
+    <h5 class="card-title text-center">Instagram</h5>
+    <h6 class="card-subtitle mb-2 text-muted text-center">Sign up to see photos and <br> videos from friends.</h6>
+    <form  action="/accounts/register/" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+      </div>
+      <input type="hidden" name="next" value="{{next}}">
+    </form>
+    <p class="card-text textsize text-muted text-center">By signing up, you agree to our <br>  Terms & Privacy Policy.</p>
+  </div>
+</div>
+<div class="card mt-1 mb-3" style="width: 24rem;"><div class="card-body">
+  <p class="textsize text-center">Have an account? <a href="/accounts/login/" class="card-link blue"> Login</a></p>
+
+</div>
+</div>
+    </div>
+    <!-- empty div -->
+    <div class="col-md-2"></div>
+  </div>
+  <style>
+   body{
+     background-image: url(./static/images/in.jpg);
+     background-attachment: fixed;
+  }
+</style>
+</div>
+</body>
+{% endblock %}

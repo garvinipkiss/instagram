@@ -1,0 +1,42 @@
+{% extends 'all-instagram/base.html' %} {% load bootstrap4 %} {% block content %} {{block.super}}}
+<div class="row mt-5">
+
+
+  <div class="container mb-5 pb-5">
+    {% for profile in profile %}
+    <div class="row">
+      <div class="col-md-4">
+        {% if profile.prof_pic %}
+        <img src="{{profile.prof_pic.url}}" class="img-circle" alt="{{profile.user.username}} profile pic"> {% endif %}
+      </div>
+      <div class="col-md-8">
+        <p><b>Username: </b> {{profile.user.username}}</p>
+        <p><b>e-mail: </b> {{profile.user.email}}</p>
+        <p><b>Bio: </b>{{profile.bio}}</p>
+        {% if profile.user.id == user.id%}
+        {# <p><a href="#" title="under development ..."><i class="fa fa-cog fa-spin"></i> Edit profile</a></p> #}
+        <p><a href="{% url 'editprofile'%}"><i class="fa fa-cog fa-spin"></i> Edit profile</a></p>
+        <p><a href="/logout" title="logout">Logout  <i class="fa fa-sign-out mr-4 pr-3"></i></a>
+        </p>
+        {% endif %}
+      </div>
+
+    </div>
+    {% endfor %}
+    <div class="row">
+      {% for photo in photos %}
+      <div class="col-md-3 ml-5 mr-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{{photo.photo.url}}" alt="{{poto.photo_caption}} photo"style="height: 18rem;">
+            <p style="font-size:12px;" class="ml-2 mt-2"><span class="textsize">{{photo.user.username}} </span>: {{photo.photo_caption}}</p>
+            <p class="text-muted ml-2" style="font-size:10px">{{photo.pub_date|timesince}}</p>
+        </div>
+      </div>
+      {% endfor%}
+    </div>
+  </div>
+
+
+
+</div>
+{% endblock%}
