@@ -1,4 +1,7 @@
-{% extends "all-instagram/base.html" %}{%load static%} {% block content %} {{block.super}}
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+ {{block.super}}
 <div class="container mt-5">
   {% for post in posts%}
   <div class="row">
