@@ -16,7 +16,7 @@ def index(request):
 
 
 @login_required(login_url='/accounts/login/')
-def user_profile(request, user_id):
+def profile(request, user_id):
     try:
         profile = Profile.objects.filter(id=user_id)
         photos = Photo.objects.filter(user_id=user_id)
@@ -26,7 +26,7 @@ def user_profile(request, user_id):
 
 
 @login_required(login_url='/accounts/login/')
-def search_results(request):
+def search(request):
     if 'profile' in request.GET and request.GET['profile']:
             search_term = request.GET.get('profile')
             searched_photos = Profile.search_profile(search_term)
@@ -40,7 +40,7 @@ def search_results(request):
 
 
 @login_required(login_url='/accounts/login/')
-def new_photo(request):
+def photo(request):
     current_user = request.user
     if request.method == 'POST':
         form = NewPhotoForm(request.POST, request.FILES)
@@ -51,7 +51,7 @@ def new_photo(request):
             return redirect('index')
     else:
         form = NewPhotoForm()
-    return render(request, 'new_photo.html', {"form": form})
+    return render(request, 'photo.html', {"form": form})
 
 
 @login_required(login_url='/accounts/login/')

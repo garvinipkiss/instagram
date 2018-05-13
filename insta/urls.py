@@ -6,10 +6,10 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^search/', views.search_results, name='search_results'),
-    url(r'^newphoto/', views.new_photo, name='new_photo'),
+    url(r'^search/', views.search, name='search'),
+    url(r'^photo/', views.photo, name='photo'),
     url(r'^edition/', views.editprofile, name='edition'),
-    url(r'^profile/(\d+)', views.user_profile, name='profile'),
+    url(r'^profile/(\d+)', views.profile, name='profile'),
     url('^comment/(?P<id>\d+)', views.comment, name='comment'),
 ]
 if settings.DEBUG:
