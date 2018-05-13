@@ -9,10 +9,10 @@ from django.db import transaction
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
-def home(request):
+def index(request):
     current_user = request.user
     posts = Photo.get_photos()
-    return render(request, 'home.html', {"current_user": current_user, "posts": posts})
+    return render(request, 'index.html', {"current_user": current_user, "posts": posts})
 
 
 @login_required(login_url='/accounts/login/')
@@ -22,7 +22,7 @@ def user_profile(request, user_id):
         photos = Photo.objects.filter(user_id=user_id)
     except Photo.DoesNotExist:
         raise Http404()
-    return render(request, 'userprofile.html', {"profile": profile, "photos": photos})
+    return render(request, 'profile.html', {"profile": profile, "photos": photos})
 
 
 @login_required(login_url='/accounts/login/')
@@ -48,7 +48,7 @@ def new_photo(request):
             photo = form.save(commit=False)
             photo.user = current_user
             photo.save()
-            return redirect('home')
+            return redirect('index')
     else:
         form = NewPhotoForm()
     return render(request, 'new_photo.html', {"form": form})
@@ -63,11 +63,11 @@ def editprofile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return redirect('home')
+            return redirect('index')
     else:
         user_form = EditUserForm(instance=request.user)
         profile_form = EditProfileForm(instance=request.user.profile)
-    return render(request, 'editprofile.html', {"user_form": user_form, "profile_form": profile_form})
+    return render(request, 'profile.html', {"user_form": user_form, "profile_form": profile_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -83,7 +83,7 @@ def comment(request, id):
             comment.photo = post
             comment.save()
 
-            return redirect('home')
+            return redirect('index')
     else:
         form = AddCommentForm()
 
