@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .forms import NewPhotoForm, EditProfileForm, AddCommentForm, EditUserForm
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.core.urlresolvers import reverse
+
 
 
 # Create your views here.
@@ -23,6 +25,24 @@ def userprofile(request, user_id):
     except Photo.DoesNotExist:
         raise Http404()
     return render(request, 'userprofile.html', {"profile": profile, "photos": photos})
+
+def followers(request, username):
+  user = user = User.objects.get(username = username)
+  user_profile = Profile.objects.get(user=user)
+  profiles = user_profile.followers.all
+
+  title = "Followers"
+
+  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
+
+def following(request, username):
+  user = user = User.objects.get(username = username)
+  user_profile = Profile.objects.get(user=user)
+  profiles = user_profile.following.all()
+
+  title = "Following"
+
+  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
 
 @login_required(login_url='/accounts/login/')
 def explore(request):
