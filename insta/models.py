@@ -66,6 +66,25 @@ class Photo(models.Model):
         photos = Photo.objects.all()
         return photos
 
+class Image(models.Model):
+    image_name = models.CharField(max_length=20)
+    image_description = models.CharField(max_length=30)
+    location = models.ForeignKey(Location)
+    category = models.ForeignKey(Category)
+    image = models.ImageField(upload_to='photos/', null="True", blank="True")
+
+    # __str__ will return string representation of the image model
+    # __str__ will enable us view our returned queries
+
+    def __str__(self):
+        return self.image_name
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
 class Comment(models.Model):
     comment = models.CharField(max_length=140, null=True, blank=True)
     time_posted = models.DateTimeField(auto_now_add=True)
