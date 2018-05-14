@@ -14,9 +14,9 @@
         {% if post.photo%}
         <img class="card-img-top" src="{{post.photo.url}}" class="img-responsive" alt=""> {% endif%}
         <div class="mt-2 ml-2 mr-3 mb-3">
-          <span><i class="fa fa-heart-o fa-1x mr-2"></i></span>
-          <span><a href="{% url 'comment'  id=post.pk %}"><i class="fa fa-comment-o fa-1x"></i></a></span>
-          <span><i class="fa fa-bookmark-o fa-1x float-right mt-1"></i></span>
+          <i class="fa fa-heart-o fa-1x mr-2"></i>
+          <a href="{% url 'comment'  id=post.pk %}"><i class="fa fa-comment-o fa-1x"></i></a>
+          <i class="fa fa-bookmark-o fa-1x float-right mt-1"></i>
           <p class="mt-1" style="font-size:12px;"><a href="{% url 'profile' post.user.id%}" class="textsize">{{post.user.username}}</a> {{post.photo_caption}}</p>
           <p class="text-muted" style="font-size:10px">{{post.pub_date|timesince}}</p>
 
