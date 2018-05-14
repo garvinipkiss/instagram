@@ -1,0 +1,12 @@
+{%extends 'base.html'%} {% block content %}
+<div class="col-xs-6 col-sm-6 col-md-6 mt-5">
+ <div class="card" style="width: 28rem;">
+ <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="{{image_item.image_name}}">
+   <div class="card-body">
+     <h5 class="card-title">Name: {{image.image_name}}</h5>
+     <p class="card-text">Category: {{image.category}}</p>
+     <p class="card-text">Description: {{image.image_description}}</p>
+     <p> Location:<span class="badge badge-info">{{image.location}}</span></p>
+   </div>
+ </div>
+{% endblock %}
