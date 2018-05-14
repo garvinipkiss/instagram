@@ -16,13 +16,13 @@ def index(request):
 
 
 @login_required(login_url='/accounts/login/')
-def profile(request, user_id):
+def userprofile(request, user_id):
     try:
         profile = Profile.objects.filter(id=user_id)
         photos = Photo.objects.filter(user_id=user_id)
     except Photo.DoesNotExist:
         raise Http404()
-    return render(request, 'profile.html', {"profile": profile, "photos": photos})
+    return render(request, 'userprofile.html', {"profile": profile, "photos": photos})
 
 @login_required(login_url='/accounts/login/')
 def explore(request):

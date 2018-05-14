@@ -69,8 +69,6 @@ class Photo(models.Model):
 class Image(models.Model):
     image_name = models.CharField(max_length=20)
     image_description = models.CharField(max_length=30)
-    location = models.ForeignKey(Location)
-    category = models.ForeignKey(Category)
     image = models.ImageField(upload_to='photos/', null="True", blank="True")
 
     # __str__ will return string representation of the image model
