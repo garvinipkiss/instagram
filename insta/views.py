@@ -24,7 +24,20 @@ def profile(request, user_id):
         raise Http404()
     return render(request, 'profile.html', {"profile": profile, "photos": photos})
 
+@login_required(login_url='/accounts/login/')
+def explore(request):
+    '''
+    function to display the index page
+    '''
+    image = Image.objects.all()
+    return render(request, 'explore.html', {"image": image})
 
+@login_required(login_url='/accounts/login/')
+def explore(request, image_id):
+
+    image = Image.objects.get(id=image_id)
+
+    return render(request, 'explore.html', {"image": image})
 @login_required(login_url='/accounts/login/')
 def search(request):
     if 'profile' in request.GET and request.GET['profile']:
