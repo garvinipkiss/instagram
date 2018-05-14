@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 {% load static %}
 <nav class="navbar navbar-light fixed-top justify-content-between mynav">
   <a class="navbar-brand" href="{% url 'index' %}">
@@ -8,7 +9,7 @@
       <input class="form-control textsize" type="text" placeholder="search" name="profile" aria-label="Search">
     </div>
   </form>
-  <div class="mr-5 pr-5" style="color:black;">
+  <div class="mr-5 pr-5" style="color:white;">
     <a href="#" title="coming soon"><i class="fa fa-compass fa-1x mr-4"></i></a>
     <a href="#" title="coming soon"><i class="fa fa-heart-o fa-1x mr-4 "></i></a>
     <a href="{% url 'photo' %}" title="upload image"><i class="fa fa-cloud-upload fa-1x mr-4"></i></a>

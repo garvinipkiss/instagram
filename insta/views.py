@@ -56,7 +56,7 @@ def photo(request):
 
 @login_required(login_url='/accounts/login/')
 @transaction.atomic
-def editprofile(request):
+def edition(request):
     if request.method == 'POST':
         user_form = EditUserForm(request.POST, instance=request.user)
         profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -67,7 +67,7 @@ def editprofile(request):
     else:
         user_form = EditUserForm(instance=request.user)
         profile_form = EditProfileForm(instance=request.user.profile)
-    return render(request, 'profile.html', {"user_form": user_form, "profile_form": profile_form})
+    return render(request, 'edition.html', {"user_form": user_form, "profile_form": profile_form})
 
 
 @login_required(login_url='/accounts/login/')

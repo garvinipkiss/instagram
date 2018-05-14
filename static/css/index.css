@@ -1,0 +1,32 @@
+h1{
+  color: blue;
+}
+ a{
+  color: black;
+  text-decoration: none;
+}
+.blue{
+color: blue;
+}
+.mynav{
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 4px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 2px 3px -3px #999;
+}
+.textsize{
+  font-size: 12px;
+  font-weight: bold;
+}
+.outline{
+  border: 0;
+  width: 200px;
+  -webkit-appearance: textarea;
+  -webkit-writing-mode: horizontal-tb;
+  overflow-wrap: break-word;
+
+}
+
+input.outline:focus{
+  outline-width: 0;
+}

@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^search/', views.search, name='search'),
     url(r'^photo/', views.photo, name='photo'),
-    url(r'^edition/', views.editprofile, name='edition'),
+    url(r'^edition/', views.edition, name='edition'),
     url(r'^profile/(\d+)', views.profile, name='profile'),
     url('^comment/(?P<id>\d+)', views.comment, name='comment'),
 ]

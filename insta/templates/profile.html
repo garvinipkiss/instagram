@@ -15,7 +15,7 @@
         <p><b>Bio: </b>{{profile.bio}}</p>
         {% if profile.user.id == user.id%}
         {# <p><a href="#" title="under development ..."><i class="fa fa-cog fa-spin"></i> Edit profile</a></p> #}
-        <p><a href="{% url 'editprofile'%}"><i class="fa fa-cog fa-spin"></i> Edit profile</a></p>
+        <p><a href="{% url 'edition'%}"><i class="fa fa-cog fa-spin"></i> Edit profile</a></p>
         <p><a href="/logout" title="logout">Logout  <i class="fa fa-sign-out mr-4 pr-3"></i></a>
         </p>
         {% endif %}
