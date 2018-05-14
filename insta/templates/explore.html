@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row" id="explore">
-  {% for post in posts reversed %}
-    <div class="col-xs-4 col-sm-3">
-      <div class="picture-square" style="background-image: url({{ post.image.url }})">
-        <a href="{% url 'post' post.pk %}">
-          <div class="content"></div>
-        </a>
-      </div>
-    </div>
+<div class="container">
+ <div class="row">
+   {# displaying index Image #}
+{% for image_item in image%}
+   <div class="col-xs-4 col-sm-4 col-md-4 mt-5">
+     <div class="card" style="width: 14rem;">
+     <img class="card-img-top" src="{{image_item.image.url}}" class="img-responsive" alt="{{image_item.image_name}}">
+       <div class="card-body">
+
+       <a href="{% url 'image' image_item.id %}" class="btn btn-blue float-right">about &rarr;</a>
+       </div>
+     </div>
+
+   </div>
   {% endfor %}
 </div>
 {% endblock %}

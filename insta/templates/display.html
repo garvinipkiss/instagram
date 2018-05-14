@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {{block.super}} {% block content %}
+
+<div class="container">
+  <div class="row">
+    {% for photo in images %}
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <img src="{{photos.image_url}}" alt="test" class="img-fluid m-1" style="max-width: 100%;  height: auto; ">
+    </div>
+    {% empty %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h2 class="text-center">No updated images</h2>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
